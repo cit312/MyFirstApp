@@ -29,6 +29,7 @@ public class MainActivity extends Activity {
 	
 	/** Called when the user clicks the Send button */
 	public void sendMessage(View view) {
+		System.out.println("sendMessage...");
 		HashMap<String,String> numbers = new HashMap<String,String>();
 		numbers.put("one", "more");
 		numbers.put("two", "another");
@@ -38,7 +39,9 @@ public class MainActivity extends Activity {
 		data.setData(numbers);
 		
 		Client c = new Client(data);
-		c.transmit();
+		HashMap returnedData = c.transmit();
+		
+		
 		
 	    Intent intent = new Intent(this, DisplayMessageActivity.class);
 	    EditText editText = (EditText) findViewById(R.id.edit_message);

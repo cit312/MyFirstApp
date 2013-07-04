@@ -4,8 +4,10 @@ import java.io.OutputStream;
 import java.io.Serializable;
 import java.net.Socket;
 import java.net.UnknownHostException;
+import java.util.HashMap;
 
 import org.quickconnectfamily.json.JSONException;
+import org.quickconnectfamily.json.JSONInputStream;
 import org.quickconnectfamily.json.JSONOutputStream;
 
 public class Client {
@@ -32,8 +34,11 @@ public class Client {
 		port = 9995;
 	}
 	
-	public void transmit()
+	@SuppressWarnings("rawtypes")
+	public HashMap transmit()
 	{
+		HashMap inString = null;
+		
 		try {
 			System.out.println("Attempting Connection...\n");
 			toServer = new Socket(destinationIP, port);
@@ -41,8 +46,12 @@ public class Client {
 			jsonOut = new JSONOutputStream(toServer.getOutputStream());
 			
 			jsonOut.writeObject(this.data);
+			
+			JSONInputStream jsonIn = new JSONInputStream(toServer.getInputStream());
+			inString = (HashMap) jsonIn.readObject();
+			
 			toServer.close();
-
+			
 		} catch (UnknownHostException e) {
 			// TODO Auto-generated catch block
 			System.out.println("Unknown Host");
@@ -55,5 +64,6 @@ public class Client {
 		}
 
 		System.out.println("End of Client");
+		return inString;
 	}
 }
