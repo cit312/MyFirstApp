@@ -8,8 +8,6 @@ import java.net.UnknownHostException;
 import org.quickconnectfamily.json.JSONException;
 import org.quickconnectfamily.json.JSONOutputStream;
 
-import com.example.hibernate.User;
-
 public class Client {
 	Socket toServer;
 	OutputStream stream;
