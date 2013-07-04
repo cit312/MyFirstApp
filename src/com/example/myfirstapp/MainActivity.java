@@ -50,34 +50,42 @@ public class MainActivity extends Activity {
 		
 		//The loop
 		for (String key : new HashSet<String>(returnedData.keySet())) {
-			System.out.println(((HashMap)returnedData.get(key)).get("Attr3"));
+			LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
+	        TextView txt1 = new TextView(this);
+	        txt1.setTextSize(40);
+	        txt1.setText(key);
+	        
+	        //linearLayout.setBackgroundColor(Color.TRANSPARENT);
+	        linearLayout.addView(txt1);
+	        
+			//System.out.println(((HashMap)returnedData.get(key)).get("Attr3"));
 		}
 		
 		
-		HashMap firstPivot = (HashMap) returnedData.get("Pivot 1");
-		HashMap secondPivot = (HashMap) returnedData.get("Pivot 2");
-		
-				
-		//Debugging
-		System.out.println(returnedData.keySet());
-		System.out.println("--THE RETURNED DATA --");
-		System.out.println(returnedData);
-		
-	    String message = (String) firstPivot.get("Attr3");
-	    String message2 = (String) secondPivot.get("Attr3");
-
-        
-        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
-        TextView txt1 = new TextView(this);
-        txt1.setTextSize(40);
-        txt1.setText(message);
-        TextView txt2 = new TextView(this);
-        txt2.setTextSize(40);
-        txt2.setText(message2);
-        
-        //linearLayout.setBackgroundColor(Color.TRANSPARENT);
-        linearLayout.addView(txt1);
-        linearLayout.addView(txt2);
+//		HashMap firstPivot = (HashMap) returnedData.get("Pivot 1");
+//		HashMap secondPivot = (HashMap) returnedData.get("Pivot 2");
+//		
+//				
+//		//Debugging
+//		System.out.println(returnedData.keySet());
+//		System.out.println("--THE RETURNED DATA --");
+//		System.out.println(returnedData);
+//		
+//	    String message = (String) firstPivot.get("Attr3");
+//	    String message2 = (String) secondPivot.get("Attr3");
+//
+//        
+//        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
+//        TextView txt1 = new TextView(this);
+//        txt1.setTextSize(40);
+//        txt1.setText(message);
+//        TextView txt2 = new TextView(this);
+//        txt2.setTextSize(40);
+//        txt2.setText(message2);
+//        
+//        //linearLayout.setBackgroundColor(Color.TRANSPARENT);
+//        linearLayout.addView(txt1);
+//        linearLayout.addView(txt2);
         
 	}
 
