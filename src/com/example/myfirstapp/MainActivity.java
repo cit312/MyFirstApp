@@ -13,6 +13,7 @@ import android.graphics.Color;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class MainActivity extends Activity {
 		HashMap returnedData = c.transmit();
 		
 		//Check if error
+		String error = (String) returnedData.get("error");
 		
 		//Get returned data
 		returnedData = (HashMap) returnedData.get("data");
@@ -51,12 +53,25 @@ public class MainActivity extends Activity {
 		//The loop
 		for (String key : new HashSet<String>(returnedData.keySet())) {
 			LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
-	        TextView txt1 = new TextView(this);
-	        txt1.setTextSize(40);
-	        txt1.setText(key);
+//	        TextView txt1 = new TextView(this);
+//	        txt1.setTextSize(40);
+//	        txt1.setText(key);
+	        
+	        Button btn = new Button(this); 
+	        btn.setText(key); 
+	        linearLayout.addView(btn);
+	        
+	        final String attr3 = (String) ((HashMap)returnedData.get(key)).get("Attr3");
+	        
+	        btn.setOnClickListener(new Button.OnClickListener() {  
+	            public void onClick(View v)
+	            {
+	                System.out.println(attr3);
+	            }
+	         });
 	        
 	        //linearLayout.setBackgroundColor(Color.TRANSPARENT);
-	        linearLayout.addView(txt1);
+//	        linearLayout.addView(txt1);
 	        
 			//System.out.println(((HashMap)returnedData.get(key)).get("Attr3"));
 		}
