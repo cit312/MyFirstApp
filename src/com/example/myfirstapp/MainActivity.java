@@ -61,12 +61,12 @@ public class MainActivity extends Activity {
 	        btn.setText(key); 
 	        linearLayout.addView(btn);
 	        
-	        final String attr3 = (String) ((HashMap)returnedData.get(key)).get("Attr3");
+	        final String id = (String) ((HashMap)returnedData.get(key)).get("ID");
 	        
 	        btn.setOnClickListener(new Button.OnClickListener() {  
 	            public void onClick(View v)
 	            {
-	                System.out.println(attr3);
+	                System.out.println(id);
 	            }
 	         });
 	        
