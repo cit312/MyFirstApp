@@ -17,17 +17,17 @@ public class Client {
 	
 	String destinationIP = "192.168.56.1";
 	int port;
-	String send;
+	CommBean data;
 	
 
 	public Client(){
 		//destinationIP = "127.0.0.1";
 		port = 9995;
-		send = "JOSH IS'NT Asadfsadfa";
+		this.data = new CommBean("command");
 	}
 	
-	public Client(String message){
-		this.send = message;
+	public Client(CommBean message){
+		this.data = message;
 		//destinationIP = "127.0.0.1";
 		port = 9995;
 	}
@@ -40,9 +40,7 @@ public class Client {
 			System.out.println("Connected to " + toServer.getInetAddress().getCanonicalHostName());
 			jsonOut = new JSONOutputStream(toServer.getOutputStream());
 			
-			CommBean bean = new CommBean();
-			
-			jsonOut.writeObject(bean);
+			jsonOut.writeObject(this.data);
 			toServer.close();
 
 		} catch (UnknownHostException e) {

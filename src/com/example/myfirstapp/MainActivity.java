@@ -1,5 +1,7 @@
 package com.example.myfirstapp;
 
+import java.util.HashMap;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
@@ -27,8 +29,15 @@ public class MainActivity extends Activity {
 	
 	/** Called when the user clicks the Send button */
 	public void sendMessage(View view) {
+		HashMap<String,String> numbers = new HashMap<String,String>();
+		numbers.put("one", "more");
+		numbers.put("two", "another");
+		numbers.put("three", "The third thing");
 		
-		Client c = new Client();
+		CommBean data = new CommBean("Testing");
+		data.setData(numbers);
+		
+		Client c = new Client(data);
 		c.transmit();
 		
 	    Intent intent = new Intent(this, DisplayMessageActivity.class);
