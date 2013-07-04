@@ -15,20 +15,20 @@ public class Client {
 	JSONOutputStream jsonOut;
 	byte[] b = new byte[100];
 	
-	String destinationIP = "127.0.0.1";
+	String destinationIP = "192.168.56.1";
 	int port;
 	String send;
 	
 
 	public Client(){
-		destinationIP = "127.0.0.1";
+		//destinationIP = "127.0.0.1";
 		port = 9995;
 		send = "JOSH IS'NT Asadfsadfa";
 	}
 	
 	public Client(String message){
 		this.send = message;
-		destinationIP = "127.0.0.1";
+		//destinationIP = "127.0.0.1";
 		port = 9995;
 	}
 	
