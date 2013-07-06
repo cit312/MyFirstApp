@@ -64,7 +64,7 @@ public class MainActivity extends Activity {
 	        final String id = (String) ((HashMap)returnedData.get(key)).get("ID");
 	        final HashMap pivotHash = (HashMap)returnedData.get(key);
 	        
-	        btn.setOnClickListener(new Button.OnClickListener() {  
+	        btn.setOnClickListener(new Button.OnClickListener() {
 	            public void onClick(View v)
 	            {
 	            	//Debugging
@@ -73,6 +73,7 @@ public class MainActivity extends Activity {
 	                
 	                Intent intent = new Intent(MainActivity.this, PivotInfo.class);
 	        	    intent.putExtra("PIVOT_DATA", pivotHash);
+	        	    //intent.putExtra("linearLayout", (CharSequence) findViewById(R.id.root));
 	        	    startActivity(intent);
 	            }
 	         });
@@ -98,6 +99,7 @@ public class MainActivity extends Activity {
 //
 //        
 //        LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
+//        System.out.println("HURR" + linearLayout);
 //        TextView txt1 = new TextView(this);
 //        txt1.setTextSize(40);
 //        txt1.setText(message);
@@ -119,13 +121,13 @@ public class MainActivity extends Activity {
 	}
 	
 	/** Called when the user clicks the Send button */
-	public void sendMessage(View view) {
-		//Build and start intent
-	    Intent intent = new Intent(this, DisplayMessageActivity.class);
-	    EditText editText = (EditText) findViewById(R.id.edit_message);
-	    String message = editText.getText().toString();
-	    intent.putExtra(EXTRA_MESSAGE, message);
-	    startActivity(intent);
-	}
+//	public void sendMessage(View view) {
+//		//Build and start intent
+//	    Intent intent = new Intent(this, DisplayMessageActivity.class);
+//	    EditText editText = (EditText) findViewById(R.id.edit_message);
+//	    String message = editText.getText().toString();
+//	    intent.putExtra(EXTRA_MESSAGE, message);
+//	    startActivity(intent);
+//	}
 
 }
