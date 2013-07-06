@@ -22,6 +22,15 @@
             android:name="android.support.PARENT_ACTIVITY"
             android:value="com.example.myfirstapp.MainActivity" />
     </activity>
+    
+     <activity
+        android:name="com.example.myfirstapp.PivotInfo"
+        android:label="@string/title_activity_display_message"
+        android:parentActivityName="com.example.myfirstapp.PivotInfo" >
+        <meta-data
+            android:name="android.support.PARENT_ACTIVITY"
+            android:value="com.example.myfirstapp.PivotInfo" />
+    </activity>
 
     </application>
 </manifest>

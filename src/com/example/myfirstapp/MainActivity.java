@@ -62,11 +62,18 @@ public class MainActivity extends Activity {
 	        linearLayout.addView(btn);
 	        
 	        final String id = (String) ((HashMap)returnedData.get(key)).get("ID");
+	        final HashMap pivotHash = (HashMap)returnedData.get(key);
 	        
 	        btn.setOnClickListener(new Button.OnClickListener() {  
 	            public void onClick(View v)
 	            {
+	            	//Debugging
 	                System.out.println(id);
+	                System.out.println(pivotHash);
+	                
+	                Intent intent = new Intent(MainActivity.this, PivotInfo.class);
+	        	    intent.putExtra("PIVOT_DATA", pivotHash);
+	        	    startActivity(intent);
 	            }
 	         });
 	        
