@@ -46,11 +46,13 @@ public class PivotInfo extends Activity {
         // Create the Attr2 text view
         TextView textView = new TextView(this);
         textView.setTextSize(40);
+        textView.setTextAppearance(this, R.style.CodeFont);
         textView.setText((String) pivotData.get("Attr2"));
         
      // Create the Attr3 text view
         TextView textView2 = new TextView(this);
         textView2.setTextSize(40);
+        textView2.setTextAppearance(this, R.style.CodeFont);
         textView2.setText((String) pivotData.get("Attr3"));
         //textView2.setText("HERES SOME TEXT");
         

@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <EditText android:id="@+id/edit_message"
-        
+    <EditText 
+        style="@style/CodeFont"
+        android:id="@+id/edit_message"
             android:layout_width="wrap_content" 
             android:layout_height="40px" 
         android:hint="@string/edit_message" />
