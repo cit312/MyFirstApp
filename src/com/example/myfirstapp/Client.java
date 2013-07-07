@@ -17,7 +17,7 @@ public class Client {
 	JSONOutputStream jsonOut;
 	byte[] b = new byte[100];
 	
-	String destinationIP = "192.168.56.1";
+	String destinationIP = "192.168.2.11";
 	int port;
 	CommBean data;
 	
