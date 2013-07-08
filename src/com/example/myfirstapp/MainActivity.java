@@ -8,8 +8,10 @@ import java.util.Map;
 import android.os.Bundle;
 import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -29,12 +31,25 @@ public class MainActivity extends Activity {
 		
 		//For Debugging
 		System.out.println("sendMessage...");
+		
+		//Get user phone number
+		String mPhoneNumber = null;
+		TelephonyManager tMgr =(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);    
+        try {
+		mPhoneNumber = tMgr.getLine1Number(); 
+		
+        } catch (Exception ex){
+        	System.out.println(ex.getMessage());
+        }
+        
+
 				
 		//Debugging: create data to send to server
 		HashMap<String,String> numbers = new HashMap<String,String>();
 		numbers.put("userID", "16");
 		numbers.put("two", "another");
 		numbers.put("three", "The third thing");
+		numbers.put("number", mPhoneNumber);
 				
 		//Put data into CommBean (the command as String and data as hashmap)
 		CommBean data = new CommBean("getPivots");
