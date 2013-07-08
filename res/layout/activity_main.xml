@@ -1,25 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/root"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <!--<EditText 
-        style="@style/CodeFont"
-        android:id="@+id/edit_message"
-            android:layout_width="wrap_content" 
-            android:layout_height="40px" 
-        android:hint="@string/edit_message" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_send"
-        android:onClick="sendMessage"  />
-    --> 
+    android:orientation="vertical" >
+    
+ <!-- android:onClick="sendMessage"  -->
+ 
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="The Weather: 80 Degrees"
-        android:onClick="sendMessage"  />
+        android:onClick="sendMessage"
+        android:text="The Weather: 80 Degrees" />
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Pivot" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="//Pivots"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.05" >
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
