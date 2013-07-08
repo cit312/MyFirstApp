@@ -136,6 +136,13 @@ public class MainActivity extends Activity {
 	}
 	
 	/** Called when the user clicks the Send button */
+	public void newPivot(View view) {
+		//Build and start intent
+	    Intent intent = new Intent(this, NewPivotActivity.class);
+	    startActivity(intent);
+	}
+	
+	/** Called when the user clicks the Send button */
 //	public void sendMessage(View view) {
 //		//Build and start intent
 //	    Intent intent = new Intent(this, DisplayMessageActivity.class);

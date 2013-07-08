@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
- <!-- android:onClick="sendMessage"  -->
+ <!-- android:onClick="newPivot"  -->
  
     <Button
         android:layout_width="match_parent"
@@ -15,7 +15,8 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Add Pivot" />
+        android:text="Add Pivot"
+        android:onClick="newPivot" />
 
     <TextView
         android:id="@+id/textView1"
