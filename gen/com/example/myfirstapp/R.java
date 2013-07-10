@@ -24,13 +24,14 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000c;
+        public static final int action_settings=0x7f08000d;
+        public static final int button1=0x7f08000b;
         public static final int datePicker1=0x7f08000a;
         public static final int radio0=0x7f080007;
         public static final int radio1=0x7f080008;
         public static final int radio2=0x7f080009;
         public static final int radioGroup1=0x7f080006;
-        public static final int ratingBar1=0x7f08000b;
+        public static final int ratingBar1=0x7f08000c;
         public static final int root=0x7f080003;
         public static final int root2=0x7f080000;
         public static final int scrollView1=0x7f080002;

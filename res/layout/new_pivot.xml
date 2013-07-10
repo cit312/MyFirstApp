@@ -81,6 +81,13 @@
         android:layout_below="@+id/radioGroup1"
         android:layout_marginLeft="18dp"
         android:layout_marginTop="14dp" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="258dp"
+        android:layout_height="wrap_content"
+        android:text="Create Pivot"
+        android:onClick="newPivot" />
     
             <RatingBar
             android:id="@+id/ratingBar1"
