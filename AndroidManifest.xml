@@ -49,6 +49,10 @@
             android:name="com.example.myfirstapp.NewPivotActivity"
             android:label="@string/title_activity_new_pivot" >
         </activity>
+        <activity
+            android:name="com.example.myfirstapp.NewLogActivity"
+            android:label="@string/title_activity_new_log" >
+        </activity>
     </application>
 
 </manifest>

@@ -64,6 +64,12 @@ public class PivotInfo extends Activity {
         linearLayout.addView(textView2);
         linearLayout.addView(textView);
     }
+	/** Called when the user clicks the new Log button */
+	public void newLog(View view) {
+		//Build and start intent
+	    Intent intent = new Intent(this, NewLogActivity.class);
+	    startActivity(intent);
+	}
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

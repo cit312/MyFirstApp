@@ -9,5 +9,6 @@
     <string name="title_activity_display_message">DisplayMessageActivity</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_new_pivot">Create New Pivot</string>
+    <string name="title_activity_new_log">Create New Log</string>
 
 </resources>
