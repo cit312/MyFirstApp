@@ -44,60 +44,108 @@ public class MainActivity extends Activity {
         
 
 				
-		//Debugging: create data to send to server
+		//Data to send to server
 		HashMap<String,String> numbers = new HashMap<String,String>();
-		numbers.put("userID", "16");
-		numbers.put("two", "another");
-		numbers.put("three", "The third thing");
 		numbers.put("number", mPhoneNumber);
-				
+		
 		//Put data into CommBean (the command as String and data as hashmap)
-		CommBean data = new CommBean("getPivots");
-		data.setData(numbers);
-				
+		CommBean dataBean = new CommBean("getAppUsers");
+		dataBean.setData(numbers);
+						
 		//Start the socket
-		Client c = new Client(data);
+		Client c = new Client(dataBean);
 		HashMap returnedData = c.transmit();
+		
+		System.out.println("---------------");
+		System.out.println(returnedData);
 		
 		//Check if error
 		String error = (String) returnedData.get("error");
 		
 		//Get returned data
 		returnedData = (HashMap) returnedData.get("data");
+		HashMap pivots = new HashMap();
+		pivots = (HashMap) returnedData.get("Pivots");
 		
-		//The loop
-		for (String key : new HashSet<String>(returnedData.keySet())) {
-			LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
-//	        TextView txt1 = new TextView(this);
-//	        txt1.setTextSize(40);
-//	        txt1.setText(key);
-	        
-	        Button btn = new Button(this); 
-	        btn.setText(key); 
-	        linearLayout.addView(btn);
-	        
-	        final String id = (String) ((HashMap)returnedData.get(key)).get("ID");
-	        final HashMap pivotHash = (HashMap)returnedData.get(key);
-	        
+		System.out.println(pivots);
+		
+		LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
+		//Loop through pivots and add em in
+		Iterator it = pivots.entrySet().iterator();
+		while (it.hasNext()){
+			final Map.Entry pivot = (Map.Entry)it.next();
+			
+			//System.out.println("**********");
+			//System.out.println(pivot.getValue());
+			
+			//Collect Vars
+			String pivotName = (String) pivot.getKey();
+			String pivot_notes = (String) ((HashMap) pivot.getValue()).get("pivotNotes");
+			//String pivot_id =  (String) ((HashMap<String,String>) pivot.getValue()).get("id");
+			//System.out.println("ID: " + ((HashMap) pivot.getValue()).get("id"));
+			//System.out.println(pivot.getKey() + " = " + pivot.getValue());
+			
+			TextView txt1 = new TextView(this);
+        
+			//Dynamicly add the buttons
+			Button btn = new Button(this); 
+			btn.setText(pivotName); 
+			linearLayout.addView(btn);
+			
+			//Add button listener
 	        btn.setOnClickListener(new Button.OnClickListener() {
 	            public void onClick(View v)
 	            {
-	            	//Debugging
-	                System.out.println(id);
-	                System.out.println(pivotHash);
 	                
 	                Intent intent = new Intent(MainActivity.this, PivotInfo.class);
-	        	    intent.putExtra("PIVOT_DATA", pivotHash);
+	        	    intent.putExtra("PIVOT_DATA", (HashMap) pivot.getValue());
 	        	    //intent.putExtra("linearLayout", (CharSequence) findViewById(R.id.root));
 	        	    startActivity(intent);
 	            }
-	         });
-	        
-	        //linearLayout.setBackgroundColor(Color.TRANSPARENT);
-//	        linearLayout.addView(txt1);
-	        
-			//System.out.println(((HashMap)returnedData.get(key)).get("Attr3"));
+	        });
+			
+	        it.remove(); // avoids a ConcurrentModificationException
 		}
+		
+		
+		
+		
+		
+//		for (String key : new HashSet<String>(((HashMap) returnedData.get("Pivots")).keySet())) {	
+////	        TextView txt1 = new TextView(this);
+////	        txt1.setTextSize(40);
+////	        txt1.setText(key);
+//	        
+//	        Button btn = new Button(this); 
+//	        btn.setText(key); 
+//	        linearLayout.addView(btn);
+//	        
+//	        final String id = (String) ((HashMap)((HashMap) returnedData.get("Pivots")).get(key)).get("ID");
+//	        final HashMap pivotHash = (HashMap)((HashMap) ((HashMap) returnedData.get("Pivots")).get(key));
+//	        
+//	        System.out.println("***************");
+//	        System.out.println(id);
+//	        System.out.println(pivotHash);
+//	        
+//	        btn.setOnClickListener(new Button.OnClickListener() {
+//	            public void onClick(View v)
+//	            {
+//	            	//Debugging
+//	                System.out.println(id);
+//	                System.out.println(pivotHash);
+//	                
+//	                Intent intent = new Intent(MainActivity.this, PivotInfo.class);
+//	        	    intent.putExtra("PIVOT_DATA", pivotHash);
+//	        	    //intent.putExtra("linearLayout", (CharSequence) findViewById(R.id.root));
+//	        	    startActivity(intent);
+//	            }
+//	         });
+//	        
+//	        //linearLayout.setBackgroundColor(Color.TRANSPARENT);
+////	        linearLayout.addView(txt1);
+//	        
+//			//System.out.println(((HashMap)returnedData.get(key)).get("Attr3"));
+//		}
 		
 		
 //		HashMap firstPivot = (HashMap) returnedData.get("Pivot 1");

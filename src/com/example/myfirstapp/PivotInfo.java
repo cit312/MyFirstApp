@@ -47,21 +47,21 @@ public class PivotInfo extends Activity {
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setTextAppearance(this, R.style.CodeFont);
-        textView.setText((String) pivotData.get("Attr2"));
+        textView.setText((String) pivotData.get("pivotNotes"));
         
      // Create the Attr3 text view
-        TextView textView2 = new TextView(this);
-        textView2.setTextSize(40);
-        textView2.setTextAppearance(this, R.style.CodeFont);
-        textView2.setText((String) pivotData.get("Attr3"));
-        //textView2.setText("HERES SOME TEXT");
+//        TextView textView2 = new TextView(this);
+//        textView2.setTextSize(40);
+//        textView2.setTextAppearance(this, R.style.CodeFont);
+//        textView2.setText((String) pivotData.get("Attr3"));
+//        //textView2.setText("HERES SOME TEXT");
         
         // Set the text view as the activity layout
         //setContentView(textView);
         
         //LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
         //System.out.println("HURR" + linearLayout);
-        linearLayout.addView(textView2);
+//        linearLayout.addView(textView2);
         linearLayout.addView(textView);
     }
 	/** Called when the user clicks the new Log button */
