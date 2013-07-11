@@ -52,4 +52,18 @@
         android:onClick="createLog"
         android:text="Create Log" />
 
+    <EditText
+        android:id="@+id/editText1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignRight="@+id/slidingDrawer1"
+        android:layout_below="@+id/button2"
+        android:ems="10"
+        android:hint="Type here"
+        android:inputType="textMultiLine" >
+
+        <requestFocus />
+    </EditText>
+
 </RelativeLayout>

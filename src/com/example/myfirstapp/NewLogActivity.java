@@ -9,23 +9,33 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 
 public class NewLogActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
+		System.out.println("NEW LOG Activity");
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.new_log);
+		
 	}
 	
 	/** Called when the user clicks the new pivot button */
 	public void createLog(View view) {
+		//Get vars
+		Intent intent2 = getIntent();
+		HashMap pivotData = (HashMap) intent2.getSerializableExtra("PIVOT_DATA");
+		//System.out.println(pivotData.get("pivot_id"));
+		//Intent intent2 = getIntent();
+		//String pivot_id = intent2.getStringExtra("pivot_id");
+		//System.out.println("-------- " + pivot_id);
+		
 		//Build and start intent
 	    Intent intent = new Intent(this, MainActivity.class);
-//	    EditText editText = (EditText) findViewById(R.id.edit_message);
-	    //String message = editText.getText().toString();
-	    //intent.putExtra(EXTRA_MESSAGE, message);
-	    
+	    EditText editText = (EditText) findViewById(R.id.editText1);
+	    String newLog = editText.getText().toString();
+//	    intent.putExtra(EXTRA_MESSAGE, message);
 	  //Get user phone number
 	  String mPhoneNumber = null;
 	  TelephonyManager tMgr =(TelephonyManager)getSystemService(Context.TELEPHONY_SERVICE);    
@@ -36,9 +46,13 @@ public class NewLogActivity extends Activity {
 	        System.out.println(ex.getMessage());
 	    }
 	    
-	    HashMap<String,String> data = new HashMap<String,String>();
-		data.put("userID", "16");
+	    HashMap data = new HashMap();
+		data.put("pivotID", pivotData.get("pivot_id"));
+		data.put("newLog", newLog);
 		data.put("number", mPhoneNumber);
+		
+		System.out.println("----------------");
+		System.out.println(data);
 		
 		//Put data into CommBean (the command as String and data as hashmap)
 		CommBean dataBean = new CommBean("createLog");

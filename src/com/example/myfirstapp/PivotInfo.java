@@ -135,8 +135,17 @@ public class PivotInfo extends Activity {
     
 	/** Called when the user clicks the new Log button */
 	public void newLog(View view) {
+		Intent intent2 = getIntent();
+		HashMap pivotData = (HashMap) intent2.getSerializableExtra("PIVOT_DATA");
+		
 		//Build and start intent
 	    Intent intent = new Intent(this, NewLogActivity.class);
+	   // System.out.println(pivotData);
+	    //System.out.println(pivotData.get("pivot_id"));
+//	    Integer pivot_id = (Integer) pivotData.get("pivot_id");
+
+	    //System.out.println("HURRR: " + pivot_id);
+	    intent.putExtra("PIVOT_DATA", (HashMap) pivotData);
 	    startActivity(intent);
 	}
 
