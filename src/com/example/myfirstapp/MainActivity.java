@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
 			
 			//Collect Vars
 			String pivotName = (String) pivot.getKey();
-			String pivot_notes = (String) ((HashMap) pivot.getValue()).get("pivotNotes");
+			//String pivot_notes = (String) ((HashMap) pivot.getValue()).get("Notes");
 			//String pivot_id =  (String) ((HashMap<String,String>) pivot.getValue()).get("id");
 			//System.out.println("ID: " + ((HashMap) pivot.getValue()).get("id"));
 			//System.out.println(pivot.getKey() + " = " + pivot.getValue());
@@ -96,7 +96,8 @@ public class MainActivity extends Activity {
 	        btn.setOnClickListener(new Button.OnClickListener() {
 	            public void onClick(View v)
 	            {
-	                
+	                System.out.println("HURRRR----------");
+	                System.out.println(pivot.getValue());
 	                Intent intent = new Intent(MainActivity.this, PivotInfo.class);
 	        	    intent.putExtra("PIVOT_DATA", (HashMap) pivot.getValue());
 	        	    //intent.putExtra("linearLayout", (CharSequence) findViewById(R.id.root));

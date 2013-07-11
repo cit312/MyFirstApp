@@ -1,6 +1,8 @@
 package com.example.myfirstapp;
 
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 import android.os.Bundle;
 import android.annotation.SuppressLint;
@@ -12,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,17 +25,16 @@ public class PivotInfo extends Activity {
     public void onCreate(Bundle savedInstanceState) {
     	//Debugging
     	System.out.println("PivotInfo Class.");
-    	setContentView(R.layout.activity_display_message);
-    	
-        super.onCreate(savedInstanceState);
+    	super.onCreate(savedInstanceState);
+		setContentView(R.layout.pivot_info);
 
         // Get the hash from the intent
         Intent intent = getIntent();
-        HashMap pivotData = (HashMap)intent.getSerializableExtra("PIVOT_DATA");
-        System.out.println("UNO");
+        HashMap pivotData = (HashMap) intent.getSerializableExtra("PIVOT_DATA");
+        
         //LinearLayout linearLayout = (LinearLayout) intent.getCharSequenceExtra("linearLayout");
         //System.out.println("HURR" + linearLayout);
-        System.out.println(pivotData);
+        //System.out.println(pivotData);
         
 //        LayoutInflater inflater;
 //        inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);              
@@ -40,21 +42,68 @@ public class PivotInfo extends Activity {
 //        View linearLayout2 = getLayoutInflater().inflate(R.layout.activity_main, null);
 //        LinearLayout linearLayout = (LinearLayout) linearLayout2.findViewById(R.id.root);
           LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root2);
-          
-          System.out.println("HEYA: " + linearLayout);
         
+        //Loop through all logs/notes
+  		Iterator it = ((HashMap) pivotData.get("Notes")).entrySet().iterator();
+  		while (it.hasNext()){
+  			Map.Entry log = (Map.Entry)it.next();
+  			System.out.println("HERRRRE: " + ((HashMap) log.getValue()).get("note"));
+
+  			String theNote = (String) ((HashMap) log.getValue()).get("note");
+  			
+//			//Add to view
+			TextView textView = new TextView(this);
+	        textView.setTextSize(200);
+	        textView.setTextAppearance(this, R.style.CodeFont);
+	        textView.setText(theNote);
+	        linearLayout.addView(textView);
+  			
+  		}
+          
+          
+//       Iterator it = pivotData.entrySet().iterator();
+//  		while (it.hasNext()){
+//  			Map.Entry log = (Map.Entry) it.next();
+//  			HashMap temp = (HashMap) log.getValue();
+//  			
+//  			Iterator it2 = temp.entrySet().iterator();
+//  	  		while (it2.hasNext()){
+//  	  			Map.Entry theLog = (Map.Entry)it2.next();
+//  	  			
+//  	  			System.out.println("HURRRR333----------");
+//  	  			System.out.println(((HashMap) theLog.getValue()).get("note"));
+//  	  			
+//  	  			String theNote = (String) ((HashMap) theLog.getValue()).get("note");
+//  	  			System.out.println("theNote: " + theNote);
+//  	  			//Add to view
+////  	  			TextView textView = new TextView(that);
+////  	  	        textView.setTextSize(200);
+////  	  	        textView.setTextAppearance(that, R.style.CodeFont);
+////  	  	        textView.setText((String) theNote);
+////  	  	        setContentView(textView);
+////  	  	        linearLayout.addView(textView);
+//  	  			
+//  	  		//Dynamicly add button
+////  				Button btn = new Button(that); 
+////  				btn.setText(theNote); 
+////  				linearLayout.addView(btn);
+//  	  	        
+//  	  		}
+//  		}
+          
+          
         // Create the Attr2 text view
-        TextView textView = new TextView(this);
-        textView.setTextSize(40);
-        textView.setTextAppearance(this, R.style.CodeFont);
-        textView.setText((String) pivotData.get("pivotNotes"));
+//        TextView textView = new TextView(this);
+//        textView.setTextSize(40);
+//        textView.setTextAppearance(this, R.style.CodeFont);
+//        textView.setText("pivotNotes");
         
      // Create the Attr3 text view
 //        TextView textView2 = new TextView(this);
 //        textView2.setTextSize(40);
 //        textView2.setTextAppearance(this, R.style.CodeFont);
-//        textView2.setText((String) pivotData.get("Attr3"));
-//        //textView2.setText("HERES SOME TEXT");
+//        textView2.setText("Attr3");
+        //textView2.setText("HERES SOME TEXT");
         
         // Set the text view as the activity layout
         //setContentView(textView);
@@ -62,8 +111,10 @@ public class PivotInfo extends Activity {
         //LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root);
         //System.out.println("HURR" + linearLayout);
 //        linearLayout.addView(textView2);
-        linearLayout.addView(textView);
+        //linearLayout.addView(textView);
     }
+    
+    
 	/** Called when the user clicks the new Log button */
 	public void newLog(View view) {
 		//Build and start intent
