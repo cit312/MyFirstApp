@@ -96,8 +96,8 @@ public class MainActivity extends Activity {
 	        btn.setOnClickListener(new Button.OnClickListener() {
 	            public void onClick(View v)
 	            {
-	                System.out.println("HURRRR----------");
-	                System.out.println(pivot.getValue());
+//	                System.out.println("HURRRR----------");
+//	                System.out.println(pivot.getValue());
 	                Intent intent = new Intent(MainActivity.this, PivotInfo.class);
 	        	    intent.putExtra("PIVOT_DATA", (HashMap) pivot.getValue());
 	        	    //intent.putExtra("linearLayout", (CharSequence) findViewById(R.id.root));

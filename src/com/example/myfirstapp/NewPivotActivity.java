@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.telephony.TelephonyManager;
 import android.view.Menu;
 import android.view.View;
+import android.widget.EditText;
 
 public class NewPivotActivity extends Activity {
 
@@ -29,9 +30,8 @@ public class NewPivotActivity extends Activity {
 	public void newPivot(View view) {
 		//Build and start intent
 	    Intent intent = new Intent(this, MainActivity.class);
-//	    EditText editText = (EditText) findViewById(R.id.edit_message);
-//	    String message = editText.getText().toString();
-//	    intent.putExtra(EXTRA_MESSAGE, message);
+	    EditText editText = (EditText) findViewById(R.id.editText1);
+	    String newPivot = editText.getText().toString();
 	    
 	  //Get user phone number
 	  String mPhoneNumber = null;
@@ -44,7 +44,7 @@ public class NewPivotActivity extends Activity {
 	    }
 	    
 	    HashMap<String,String> data = new HashMap<String,String>();
-		data.put("userID", "16");
+		data.put("newPivot", newPivot);
 		data.put("number", mPhoneNumber);
 		
 		//Put data into CommBean (the command as String and data as hashmap)
