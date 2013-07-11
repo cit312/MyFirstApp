@@ -44,19 +44,37 @@ public class PivotInfo extends Activity {
           LinearLayout linearLayout = (LinearLayout) findViewById(R.id.root2);
         
         //Loop through all logs/notes
+        Integer count = 0; // For a striped view
   		Iterator it = ((HashMap) pivotData.get("Notes")).entrySet().iterator();
   		while (it.hasNext()){
   			Map.Entry log = (Map.Entry)it.next();
-  			System.out.println("HERRRRE: " + ((HashMap) log.getValue()).get("note"));
-
   			String theNote = (String) ((HashMap) log.getValue()).get("note");
   			
-//			//Add to view
-			TextView textView = new TextView(this);
-	        textView.setTextSize(200);
-	        textView.setTextAppearance(this, R.style.CodeFont);
-	        textView.setText(theNote);
-	        linearLayout.addView(textView);
+			//Add to view
+  			if (count % 2 == 0) {
+  				TextView textView = new TextView(this);
+		        textView.setTextSize(200);
+		        textView.setTextAppearance(this, R.style.Log);
+		        textView.setBackgroundColor(0xff808080);
+		        textView.setText(theNote);
+		        linearLayout.addView(textView);
+  			} else {
+  				TextView textView2 = new TextView(this);
+		        textView2.setTextSize(200);
+		        textView2.setTextAppearance(this, R.style.Log2);
+		        textView2.setBackgroundColor(0xff000000);
+		        textView2.setText(theNote);
+		        linearLayout.addView(textView2);
+  			}
+			count++;
+	        
+	        
+	        
+//	        TextView ruler = new TextView(this);
+//	        ruler.setBackgroundColor( 0xff000000);
+//	        ruler.setTextAppearance(this, R.style.LineBreak);
+//	        linearLayout.addView(ruler);
+	        
   			
   		}
           
