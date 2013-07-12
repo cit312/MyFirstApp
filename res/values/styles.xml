@@ -28,6 +28,10 @@
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         -->
+        <item name="android:layout_width">fill_parent</item>
+         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">#C0C0C0</item>
+         <item name="android:typeface">monospace</item>
     </style>
 
     <!-- Application theme. -->

@@ -1,5 +1,6 @@
 package com.example.myfirstapp;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -28,6 +29,17 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		
+		//***** Get Weather Stuff
+		HTTP_URL_JSON_Test jsonWeather = new HTTP_URL_JSON_Test();
+		HashMap weather = new HashMap();
+		weather = (HashMap) jsonWeather.getWeather();
+
+		HashMap current_condition = (HashMap) ((ArrayList) weather.get("current_condition")).get(0);
+		
+		Button p1_button = (Button) findViewById(R.id.weatherBtn);
+		p1_button.setText("Weather: " + current_condition.get("temp_F") + " Degrees");
+		//***********************************
 		
 		//For Debugging
 		System.out.println("sendMessage...");
@@ -192,13 +204,19 @@ public class MainActivity extends Activity {
 	}
 	
 	/** Called when the user clicks the Send button */
-//	public void sendMessage(View view) {
-//		//Build and start intent
-//	    Intent intent = new Intent(this, DisplayMessageActivity.class);
+	public void sendMessage(View view) {
+		//This sucks doing again...
+		HTTP_URL_JSON_Test jsonWeather = new HTTP_URL_JSON_Test();
+		HashMap weather = new HashMap();
+		weather = (HashMap) jsonWeather.getWeather();
+		
+		//Build and start intent
+	    Intent intent = new Intent(this, WeatherActivity.class);
 //	    EditText editText = (EditText) findViewById(R.id.edit_message);
 //	    String message = editText.getText().toString();
 //	    intent.putExtra(EXTRA_MESSAGE, message);
-//	    startActivity(intent);
-//	}
+	    intent.putExtra("WEATHER", (HashMap) weather);
+	    startActivity(intent);
+	}
 
 }

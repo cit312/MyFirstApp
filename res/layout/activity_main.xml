@@ -8,10 +8,11 @@
  <!-- android:onClick="newPivot"  -->
  
     <Button
+        android:id="@+id/weatherBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="sendMessage"
-        android:text="The Weather: 80 Degrees" />
+        android:text="The Weather:" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
